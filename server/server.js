@@ -1,4 +1,4 @@
-import 'dotenv/config';          // load .env variables into process.env FIRST
+import 'dotenv/config';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import express from 'express';

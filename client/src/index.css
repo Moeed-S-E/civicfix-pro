@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Civic AI Brand Palette reference ──────────────────────────────────────
+   navy   #073574  Primary brand, headers, navbars
+   sky    #2EA0F2  Buttons, links, interactive elements
+   civic  #0B7B3E  Success states, eco/civic badges
+   leaf   #34C759  Action indicators, positive highlights
+   canvas #F8FAFC  App background, card surfaces
+   ink    #1E293B  Body text, headings, labels
+   ────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  color: #1E293B;       /* ink */
+  background: #F8FAFC;  /* canvas */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  overflow-x: clip;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* Focus ring — sky blue glow */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(46, 160, 242, 0.5); /* sky/50 */
+  outline-offset: 2px;
+}
+
+/* ── Hero section background ───────────────────────────────────────────── */
+.hero-pattern {
+  background-color: #EBF4FE;                               /* sky-tinted wash */
+  background-image: radial-gradient(rgba(7, 53, 116, 0.07) 1px, transparent 1px); /* navy dots */
+  background-size: 19px 19px;
+}
+
+/* ── Brand mark (navbar logo pill) ────────────────────────────────────── */
+.brand-mark {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 14px;
+  background: #073574;  /* navy */
+  color: #2EA0F2;       /* sky — icon color inside the mark */
+}
+
+/* ── Navigation tabs ───────────────────────────────────────────────────── */
+.nav-tab {
+  border-radius: 9999px;
+  padding: 9px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(30, 41, 59, 0.6);  /* ink/60 */
+  transition: background-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.nav-tab:hover:not(.nav-tab-active) {
+  background: rgba(7, 53, 116, 0.07);  /* navy/7 */
+  color: #073574;                       /* navy */
+}
+
+.nav-tab-active {
+  background: #073574;  /* navy */
+  color: white;
+  box-shadow: 0 2px 8px rgba(7, 53, 116, 0.22);
+}
+
+.nav-tab-active:hover {
+  background: #073574;
+  color: white;
+}
+
+/* ── Eyebrow label (small uppercase caption) ───────────────────────────── */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #2EA0F2;       /* sky — accent text */
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+/* ── Card / panel shared base ──────────────────────────────────────────── */
+.form-panel,
+.dashboard-panel,
+.issue-card {
+  border: 1px solid rgba(7, 53, 116, 0.08);            /* navy/8 */
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 12px 32px rgba(7, 53, 116, 0.07);     /* navy-tinted shadow */
+}
+
+.form-panel {
+  padding: 28px;
+}
+
+/* ── Icon containers (form & KPI) ──────────────────────────────────────── */
+.form-icon,
+.kpi-icon {
+  display: grid;
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 14px;
+  background: #EBF4FE;  /* sky-tinted light bg */
+  color: #073574;        /* navy icon */
+}
+
+/* ── Form labels ───────────────────────────────────────────────────────── */
+.field-label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(30, 41, 59, 0.78);  /* ink/78 */
+}
+
+/* ── Form inputs / selects / textareas ────────────────────────────────── */
+.field-input {
+  width: 100%;
+  border: 1px solid rgba(30, 41, 59, 0.14);  /* ink/14 */
+  border-radius: 11px;
+  background: #fff;
+  padding: 11px 13px;
+  color: #1E293B;    /* ink */
+  font-size: 13px;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.field-input::placeholder {
+  color: rgba(30, 41, 59, 0.38);  /* ink/38 */
+}
+
+.field-input:focus {
+  border-color: #2EA0F2;                        /* sky */
+  box-shadow: 0 0 0 3px rgba(46, 160, 242, 0.15);  /* sky/15 glow */
+  outline: none;
+}
+
+/* ── Primary submit button ─────────────────────────────────────────────── */
+.submit-button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: 11px;
+  background: #073574;  /* navy */
+  padding: 13px 18px;
+  color: white;
+  font-size: 14px;
+  font-weight: 800;
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #052a5c;  /* navy darkened ~10% */
+}
+
+.submit-button:disabled {
+  cursor: wait;
+  opacity: 0.75;
+}
+
+/* ── Issue card (community feed) ───────────────────────────────────────── */
+.issue-card {
+  padding: 20px;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.issue-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(7, 53, 116, 0.11);  /* navy shadow */
+}
+
+/* ── Category label pill ───────────────────────────────────────────────── */
+.category-label {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  background: #EBF4FE;  /* sky tint */
+  padding: 5px 9px;
+  color: #073574;        /* navy */
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* ── Status badges ─────────────────────────────────────────────────────── */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 5px 9px;
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* Pending — amber (unchanged, universally understood) */
+.status-pending {
+  background: #FFF4DC;
+  color: #95620E;
+}
+
+/* In Progress — sky blue (matches the sky accent) */
+.status-progress {
+  background: #E0F2FE;
+  color: #0369A1;
+}
+
+/* Resolved — civic green (success = forest green brand color) */
+.status-resolved {
+  background: #DCFCE7;
+  color: #166534;
+}
+
+/* ── Refresh / secondary button ────────────────────────────────────────── */
+.refresh-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(7, 53, 116, 0.15);  /* navy/15 */
+  border-radius: 10px;
+  background: white;
+  padding: 10px 14px;
+  color: #073574;    /* navy */
+  font-size: 13px;
+  font-weight: 700;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+
+.refresh-button:hover:not(:disabled) {
+  border-color: #2EA0F2;   /* sky on hover */
+  background: #F0F9FF;     /* sky-50 tint */
+}
+
+.refresh-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+/* ── KPI stat cards ────────────────────────────────────────────────────── */
+.kpi-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(7, 53, 116, 0.08);
+  border-radius: 17px;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(7, 53, 116, 0.06);
+}
+
+/* Decorative circle watermark in bottom-right corner */
+.kpi-card::after {
+  position: absolute;
+  right: -24px;
+  bottom: -34px;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  background: rgba(46, 160, 242, 0.1);  /* sky tint */
+  content: '';
+}
+
+/* card-green: Total reports — navy icon */
+.card-green .kpi-icon {
+  background: #EBF4FE;
+  color: #073574;  /* navy */
+}
+
+/* card-amber: Pending — keep amber for universal "waiting" signal */
+.card-amber .kpi-icon {
+  background: #FFF4DC;
+  color: #A57116;
+}
+
+/* card-blue: In Progress — sky blue */
+.card-blue .kpi-icon {
+  background: #E0F2FE;
+  color: #0369A1;
+}
+
+/* card-lime: Resolved — civic green */
+.card-lime .kpi-icon {
+  background: #DCFCE7;
+  color: #166534;
+}
+
+/* ── KPI trend indicator ───────────────────────────────────────────────── */
+.kpi-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 15px;
+  color: #0B7B3E;  /* civic green — positive signal */
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── Dashboard panel ───────────────────────────────────────────────────── */
+.dashboard-panel {
+  padding: 22px;
+}
+
+/* ── Admin status select dropdown ──────────────────────────────────────── */
+.status-select {
+  min-width: 122px;
+  border: 1px solid rgba(7, 53, 116, 0.15);  /* navy/15 */
+  border-radius: 8px;
+  background: white;
+  padding: 7px 8px;
+  color: #073574;  /* navy */
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-select:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+/* ── Responsive padding tweaks ─────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .form-panel {
+    padding: 21px;
+  }
+
+  .dashboard-panel {
+    padding: 18px;
+  }
+}
